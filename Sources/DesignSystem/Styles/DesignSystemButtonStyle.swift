@@ -2,43 +2,14 @@ import SwiftUI
 
 public struct DesignSystemButtonStyle: ButtonStyle {
   @Environment(\.isEnabled) private var isEnabled
-  @State private var tapAnimation: Bool = false
   var style: DesignSystemButtonStyle.Style
-
-  private func offset(isPressed: Bool) -> CGFloat {
-    guard isEnabled else { return 0 }
-    return isPressed || tapAnimation ? Constants.Offset.pressed : Constants.Offset.default
-  }
 
   public func makeBody(configuration: Self.Configuration) -> some View {
     return configuration.label
       .textStyle(.designSystem(.body(.bold)))
       .foregroundColor(style.textColor(isEnabled: isEnabled))
-      .offset(y: offset(isPressed: configuration.isPressed))
       .padding(Constants.padding)
-      .background(background(configuration: configuration))
-      .onChange(of: configuration.isPressed, perform: { newValue in
-        if newValue {
-          tapAnimation = true
-          Task { @MainActor in
-            try? await Task.sleep(for: .seconds(Constants.animationDuration))
-            tapAnimation = false
-          }
-        }
-      })
-      .animation(.linear(duration: Constants.animationDuration), value: tapAnimation)
-      .animation(.linear(duration: Constants.animationDuration), value: configuration.isPressed)
-  }
-
-  @ViewBuilder private func background(configuration: Self.Configuration) -> some View {
-    ZStack {
-      if isEnabled {
-        RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(style.shadowColor(isEnabled: isEnabled))
-      }
-      RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(style.backgroundColor(isEnabled: isEnabled))
-        .offset(y: offset(isPressed: configuration.isPressed))
-    }
-    .frame(minWidth: 44, minHeight: 44)
+      .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(configuration.isPressed ? style.pressedBackgroundColor(isEnabled: isEnabled) : style.backgroundColor(isEnabled: isEnabled)))
   }
 }
 
@@ -50,27 +21,27 @@ extension DesignSystemButtonStyle {
     func backgroundColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color.white : Color.gray
+        return isEnabled ? Color(R.color.buttonBackgroundPrimary) : Color(R.color.buttonBackgroundDisabled)
       case .secondary:
-        return isEnabled ? Color.white : Color.gray
+        return isEnabled ? Color(R.color.buttonBackgroundSecondary) : Color(R.color.buttonBackgroundDisabled)
       }
     }
 
-    func shadowColor(isEnabled: Bool) -> Color {
+    func pressedBackgroundColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color.gray : Color.gray
+        return isEnabled ? Color(R.color.buttonBackgroundPrimaryPressed) : Color(R.color.buttonBackgroundDisabled)
       case .secondary:
-        return isEnabled ? Color.gray : Color.gray
+        return isEnabled ? Color(R.color.buttonBackgroundSecondaryPressed) : Color(R.color.buttonBackgroundDisabled)
       }
     }
 
     func textColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? .black : Color.white
+        return isEnabled ? Color(R.color.buttonTextPrimary) : Color(R.color.buttonTextDisabled)
       case .secondary:
-        return isEnabled ? .white : Color.white
+        return isEnabled ? Color(R.color.buttonTextSecondary) : Color(R.color.buttonTextDisabled)
       }
     }
   }
@@ -81,11 +52,6 @@ extension DesignSystemButtonStyle {
   private enum Constants {
     static let padding: CGFloat = 12
     static let cornerRadius: CGFloat = 12
-    static let animationDuration: CGFloat = 0.1
-    enum Offset {
-      static let `default`: CGFloat = -4
-      static let pressed: CGFloat = -1
-    }
   }
 }
 
