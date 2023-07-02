@@ -7,9 +7,10 @@ public struct DesignSystemButtonStyle: ButtonStyle {
   public func makeBody(configuration: Self.Configuration) -> some View {
     return configuration.label
       .textStyle(.designSystem(.body(.bold)))
-      .foregroundColor(style.textColor(isEnabled: isEnabled))
-      .padding(Constants.padding)
-      .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(configuration.isPressed ? style.pressedBackgroundColor(isEnabled: isEnabled) : style.backgroundColor(isEnabled: isEnabled)))
+      .foregroundColor(configuration.isPressed ? style.pressedTextColor(isEnabled: isEnabled) : style.textColor(isEnabled: isEnabled))
+      .padding(Spacing.medium)
+      .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(configuration.isPressed ? style.pressedBackgroundColor(isEnabled: isEnabled) : style.backgroundColor(isEnabled: isEnabled)).frame(minHeight: Constants.minHeight))
+      .frame(minHeight: Constants.minHeight)
   }
 }
 
@@ -21,27 +22,37 @@ extension DesignSystemButtonStyle {
     func backgroundColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color(R.color.buttonBackgroundPrimary) : Color(R.color.buttonBackgroundDisabled)
+        return isEnabled ?
+        Color.Button.Background.primary : Color.Button.Background.disabled
       case .secondary:
-        return isEnabled ? Color(R.color.buttonBackgroundSecondary) : Color(R.color.buttonBackgroundDisabled)
+        return isEnabled ? Color.Button.Background.secondary : Color.Button.Background.disabled
       }
     }
 
     func pressedBackgroundColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color(R.color.buttonBackgroundPrimaryPressed) : Color(R.color.buttonBackgroundDisabled)
+        return isEnabled ? Color.Button.Pressed.Background.primary : Color.Button.Background.disabled
       case .secondary:
-        return isEnabled ? Color(R.color.buttonBackgroundSecondaryPressed) : Color(R.color.buttonBackgroundDisabled)
+        return isEnabled ? Color.Button.Pressed.Background.secondary : Color.Button.Background.disabled
       }
     }
 
     func textColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color(R.color.buttonTextPrimary) : Color(R.color.buttonTextDisabled)
+        return isEnabled ? Color.Button.Text.primary : Color.Button.Background.disabled
       case .secondary:
-        return isEnabled ? Color(R.color.buttonTextSecondary) : Color(R.color.buttonTextDisabled)
+        return isEnabled ? Color.Button.Text.secondary : Color.Button.Background.disabled
+      }
+    }
+
+    func pressedTextColor(isEnabled: Bool) -> Color {
+      switch self {
+      case .primary:
+        return isEnabled ? Color.Button.Pressed.Text.primary : Color.Button.Background.disabled
+      case .secondary:
+        return isEnabled ? Color.Button.Pressed.Text.secondary : Color.Button.Background.disabled
       }
     }
   }
@@ -52,6 +63,7 @@ extension DesignSystemButtonStyle {
   private enum Constants {
     static let padding: CGFloat = 12
     static let cornerRadius: CGFloat = 12
+    static let minHeight: CGFloat = 50
   }
 }
 

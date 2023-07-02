@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
   name: "DesignSystem",
   platforms: [
-    .iOS(.v16),
+    .iOS("17.0"),
   ],
   products: [
     .library(
@@ -14,13 +14,17 @@ let package = Package(
       targets: ["DesignSystem"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/mac-cain13/R.swift.git", from: "7.0.0")
+    //    .package(url: "https://github.com/mac-cain13/R.swift.git", from: "7.0.0")
   ],
   targets: [
     .target(
       name: "DesignSystem",
-      dependencies: [.product(name: "RswiftLibrary", package: "R.swift")],
-         plugins: [.plugin(name: "RswiftGeneratePublicResources", package: "R.swift")]),
+      dependencies: [
+//        .product(name: "RswiftLibrary", package: "R.swift")
+      ],
+      plugins: [
+//        .plugin(name: "RswiftGeneratePublicResources", package: "R.swift")
+      ]),
     .testTarget(
       name: "DesignSystemTests",
       dependencies: ["DesignSystem"]),

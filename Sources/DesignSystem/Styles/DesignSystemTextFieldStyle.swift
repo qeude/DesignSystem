@@ -1,45 +1,35 @@
 import SwiftUI
 
+public struct DesignSystemTextFieldStyle: TextFieldStyle {
+  @FocusState var isFocused: Bool
 
-public struct DesignSystemTextField: View {
-  let tile: String
-  @Binding var text: String
-  let placeholder: String?
-
-  public init(tile: String, text: Binding<String>, placeholder: String? = nil) {
-    self.tile = tile
-    self._text = text
-    self.placeholder = placeholder
-  }
-
-  public var body: some View {
-
-    if let placeholder {
-      TextField("", text: $text, prompt: Text(placeholder).foregroundColor(Color.black))
-        .textFieldStyle(.designSystem)
-    } else {
-      TextField("", text: $text, prompt: nil)
-        .textFieldStyle(.designSystem)
-    }
-  }
-}
-
-private struct DesignSystemTextFieldStyle: TextFieldStyle {
   public func _body(configuration: TextField<Self._Label>) -> some View {
     configuration
       .textStyle(.designSystem(.body()))
-      .padding(12)
-      .frame(minHeight: 44)
-      .foregroundColor(.white)
-      .overlay {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-          .stroke(Color.black, lineWidth: 2)
-      }
+      .padding(Spacing.medium)
+      .frame(minHeight: Constants.minHeight)
+      .foregroundColor(Color.Text.primary)
+      .background(
+        RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous)
+          .stroke(Color.Stroke.tertiary, lineWidth: isFocused ? Constants.lineWidth : 0)
+          .fill(Color.Background.secondary)
+      )
+      .focusable()
+      .focused($isFocused)
+      .animation(.easeOut(duration: 0.3), value: isFocused)
+  }
+}
+
+extension DesignSystemTextFieldStyle {
+  enum Constants {
+    static let minHeight: CGFloat = 44
+    static let cornerRadius: CGFloat = 12
+    static let lineWidth: CGFloat = 2
   }
 }
 
 // MARK: Convenient usage
-extension TextFieldStyle where Self == DesignSystemTextFieldStyle {
+public extension TextFieldStyle where Self == DesignSystemTextFieldStyle {
   static var designSystem: Self {
     return .init()
   }
@@ -48,16 +38,17 @@ extension TextFieldStyle where Self == DesignSystemTextFieldStyle {
 // MARK: Previews
 struct DesignSystemTextField_Previews: PreviewProvider {
   struct PreviewsContainer: View {
-      @State private var text = ""
+    @State private var text = ""
 
-      var body: some View {
-        DesignSystemTextField(tile: "", text: $text, placeholder: "Add new player...")
-      }
+    var body: some View {
+      TextField("Add new player...", text: $text, prompt: nil)
+        .textFieldStyle(.designSystem)
+    }
   }
 
   static var previews: some View {
     PreviewsContainer()
       .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .background(Color.black)
+      .padding()
   }
 }
