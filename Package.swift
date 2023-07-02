@@ -14,17 +14,13 @@ let package = Package(
       targets: ["DesignSystem"]),
   ],
   dependencies: [
-    //    .package(url: "https://github.com/mac-cain13/R.swift.git", from: "7.0.0")
   ],
   targets: [
     .target(
       name: "DesignSystem",
       dependencies: [
-//        .product(name: "RswiftLibrary", package: "R.swift")
       ],
-      plugins: [
-//        .plugin(name: "RswiftGeneratePublicResources", package: "R.swift")
-      ]),
+      plugins: []),
     .testTarget(
       name: "DesignSystemTests",
       dependencies: ["DesignSystem"]),
