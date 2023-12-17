@@ -41,18 +41,18 @@ extension DesignSystemButtonStyle {
     func textColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color.Button.Text.primary : Color.Button.Background.disabled
+        return isEnabled ? Color.Button.Text.primary : Color.Button.Text.disabled
       case .secondary:
-        return isEnabled ? Color.Button.Text.secondary : Color.Button.Background.disabled
+        return isEnabled ? Color.Button.Text.secondary : Color.Button.Text.disabled
       }
     }
 
     func pressedTextColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color.Button.Pressed.Text.primary : Color.Button.Background.disabled
+        return isEnabled ? Color.Button.Pressed.Text.primary : Color.Button.Text.disabled
       case .secondary:
-        return isEnabled ? Color.Button.Pressed.Text.secondary : Color.Button.Background.disabled
+        return isEnabled ? Color.Button.Pressed.Text.secondary : Color.Button.Text.disabled
       }
     }
   }
@@ -75,57 +75,32 @@ extension ButtonStyle where Self == DesignSystemButtonStyle {
 }
 
 // MARK: Previews
-struct DesignSystemButtonStyle_Previews: PreviewProvider {
-  static var previews: some View {
-    Group {
-      HStack {
-        Button {
-        } label: {
-          Text("Button")
-        }
-        .previewLayout(
-          .fixed(
-            width: 200,
-            height: 100)
-        )
-        Button {
-        } label: {
-          Text("Button")
-        }
-        .previewLayout(
-          .fixed(
-            width: 200,
-            height: 100)
-        )
-        .disabled(true)
-      }
-      .buttonStyle(.designSystem(.primary))
-      .previewDisplayName("Primary")
-      HStack {
-        Button {
-        } label: {
-          Text("Button")
-        }
-        .previewLayout(
-          .fixed(
-            width: 200,
-            height: 100)
-        )
-        Button {
-        } label: {
-          Text("Button")
-        }
-        .previewLayout(
-          .fixed(
-            width: 200,
-            height: 100)
-        )
-        .disabled(true)
-      }
-      .buttonStyle(.designSystem(.secondary))
-      .previewDisplayName("Secondary")
+#Preview("Primary") {
+  VStack {
+    Button {
+    } label: {
+      Text("Button")
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//    .background(Color.dark500)
+    Button {
+    } label: {
+      Text("Disabled")
+    }
+    .disabled(true)
   }
+  .buttonStyle(.designSystem(.primary))
+}
+
+#Preview("Secondary") {
+  VStack {
+    Button {
+    } label: {
+      Text("Button")
+    }
+    Button {
+    } label: {
+      Text("Button")
+    }
+    .disabled(true)
+  }
+  .buttonStyle(.designSystem(.secondary))
 }

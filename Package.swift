@@ -1,4 +1,4 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
   name: "DesignSystem",
   platforms: [
-    .iOS("17.0"),
+    .iOS(.v17)
   ],
   products: [
     .library(
@@ -14,11 +14,13 @@ let package = Package(
       targets: ["DesignSystem"]),
   ],
   dependencies: [
+    .package(url: "https://github.com/qeude/MacroKit.git", .upToNextMajor(from: "0.1.0"))
   ],
   targets: [
     .target(
       name: "DesignSystem",
       dependencies: [
+        "MacroKit"
       ],
       plugins: []),
     .testTarget(
