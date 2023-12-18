@@ -6,7 +6,9 @@ import PackageDescription
 let package = Package(
   name: "DesignSystem",
   platforms: [
-    .iOS(.v17)
+    .iOS(.v17),
+    .macOS(.v14),
+    .watchOS(.v10)
   ],
   products: [
     .library(
@@ -14,14 +16,14 @@ let package = Package(
       targets: ["DesignSystem"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/qeude/MacroKit.git", .upToNextMajor(from: "0.1.0"))
   ],
   targets: [
     .target(
       name: "DesignSystem",
-      dependencies: [
-        "MacroKit"
-      ],
+      dependencies: [],
+      resources: [
+          .process("Resources")
+        ],
       plugins: []),
     .testTarget(
       name: "DesignSystemTests",

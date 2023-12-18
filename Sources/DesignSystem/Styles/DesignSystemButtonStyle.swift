@@ -23,36 +23,36 @@ extension DesignSystemButtonStyle {
       switch self {
       case .primary:
         return isEnabled ?
-        Color.Button.Background.primary : Color.Button.Background.disabled
+        Color(.ButtonBackground.primary) : Color(.ButtonBackground.disabled)
       case .secondary:
-        return isEnabled ? Color.Button.Background.secondary : Color.Button.Background.disabled
+        return isEnabled ? Color(.ButtonBackground.primary) : Color(.ButtonBackground.disabled)
       }
     }
 
     func pressedBackgroundColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color.Button.Pressed.Background.primary : Color.Button.Background.disabled
+        return isEnabled ? Color(.ButtonBackground.primary) : Color(.ButtonBackground.disabled)
       case .secondary:
-        return isEnabled ? Color.Button.Pressed.Background.secondary : Color.Button.Background.disabled
+        return isEnabled ? Color(.ButtonBackground.primary) : Color(.ButtonBackground.disabled)
       }
     }
 
     func textColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color.Button.Text.primary : Color.Button.Text.disabled
+        return isEnabled ? Color(.ButtonLabel.primary) : Color(.ButtonLabel.disabled)
       case .secondary:
-        return isEnabled ? Color.Button.Text.secondary : Color.Button.Text.disabled
+        return isEnabled ? Color(.ButtonLabel.primary) : Color(.ButtonLabel.disabled)
       }
     }
 
     func pressedTextColor(isEnabled: Bool) -> Color {
       switch self {
       case .primary:
-        return isEnabled ? Color.Button.Pressed.Text.primary : Color.Button.Text.disabled
+        return isEnabled ? Color(.ButtonLabel.primary) : Color(.ButtonLabel.disabled)
       case .secondary:
-        return isEnabled ? Color.Button.Pressed.Text.secondary : Color.Button.Text.disabled
+        return isEnabled ? Color(.ButtonLabel.primary) : Color(.ButtonLabel.disabled)
       }
     }
   }
