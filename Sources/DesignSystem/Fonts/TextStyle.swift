@@ -25,12 +25,12 @@ public struct DesignSystemTextStyle: TextStyle {
     var name: String {
       switch self {
       case .title1, .title2, .title3:
-        return "ClashDisplay-Semibold"
+        return ClashDisplayFont.bold.name
       case .body(let variant), .small(let variant):
         switch variant {
-        case .regular: return "Satoshi-Regular"
-        case .italic: return "Satoshi-Italic"
-        case .bold: return "Satoshi-Bold"
+        case .regular: return SatoshiFont.regular.name
+        case .italic: return SatoshiFont.italic.name
+        case .bold: return SatoshiFont.bold.name
         }
       }
     }
@@ -63,7 +63,7 @@ public struct DesignSystemTextStyle: TextStyle {
   }
 
   public func makeBody(configuration: Self.Configuration) -> some View {
-    return configuration.label
+    configuration.label
       .font(.custom(style.name, size: style.size, relativeTo: style.systemStyle))
   }
 }
@@ -91,4 +91,28 @@ public struct TextStyleConfiguration {
   }
 
   let label: TextStyleConfiguration.Label
+}
+
+#Preview {
+  VStack(alignment: .leading) {
+    Text("Title 1")
+      .textStyle(.designSystem(.title1))
+    Text("Title 2")
+      .textStyle(.designSystem(.title2))
+    Text("Title 3")
+      .textStyle(.designSystem(.title3))
+    Text("Body regular")
+      .textStyle(.designSystem(.body()))
+    Text("Body italic")
+      .textStyle(.designSystem(.body(.italic)))
+    Text("Body bold")
+      .textStyle(.designSystem(.body(.bold)))
+    Text("Small regular")
+      .textStyle(.designSystem(.small()))
+    Text("Small italic")
+      .textStyle(.designSystem(.small(.italic)))
+    Text("Small bold")
+      .textStyle(.designSystem(.small(.bold)))
+  }
+
 }

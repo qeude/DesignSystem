@@ -20,9 +20,10 @@ let package = Package(
   targets: [
     .target(
       name: "DesignSystem",
-      dependencies: [],
+      dependencies: [
+      ],
       resources: [
-          .process("Resources")
+          .process("Resources"),
         ],
       plugins: []),
     .testTarget(

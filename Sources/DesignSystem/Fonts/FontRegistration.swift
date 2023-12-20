@@ -1,0 +1,21 @@
+import CoreGraphics
+import CoreText
+import Foundation
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
+
+public enum FontError: Swift.Error {
+  case failedToRegisterFont
+}
+
+func registerFont(named name: String) throws {
+  guard let asset = NSDataAsset(name: "\(name)", bundle: Bundle.module),
+        let provider = CGDataProvider(data: asset.data as NSData),
+        let font = CGFont(provider),
+        CTFontManagerRegisterGraphicsFont(font, nil) else {
+    throw FontError.failedToRegisterFont
+  }
+}
