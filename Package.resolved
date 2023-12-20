@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "macrokit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/qeude/MacroKit.git",
+      "state" : {
+        "revision" : "90cca32ea588b953240269430320216668b9e3d7",
+        "version" : "0.1.0"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "6ad4ea24b01559dde0773e3d091f1b9e36175036",
+        "version" : "509.0.2"
+      }
+    }
+  ],
+  "version" : 2
+}
