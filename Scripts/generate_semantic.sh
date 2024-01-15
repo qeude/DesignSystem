@@ -105,7 +105,6 @@ function generateSemanticColors() {
     # Loop through each color
     for family in $color_families; do
         # Create a folder for the color
-        echo "    🏗️ Generating $(uppercase $family) colors…"
         value=$(jq -r ".$family" "$COLOR_FILE")
         createSemanticColorFamily $(uppercase $family)
         children=$(jq -r 'keys_unsorted | .[]' <<< "$value")
@@ -117,7 +116,6 @@ function generateSemanticColors() {
             createSemanticColor $family $child $light_hex $dark_hex
         done
         createIndexFilesForFamily $family
-        echo "    ✅ $(uppercase $family) colors successfully generated"
     done
 }
 
@@ -132,7 +130,7 @@ createIndexFilesForFamily() {
 
 import SwiftUI
 
-extension Color {
+extension DesignSystem.Color {
   public enum ${uppercase_color_family} {
 $(
     children=$(jq -r 'keys_unsorted | .[]' <<< "$value")
@@ -153,6 +151,7 @@ mapColorToHex() {
     echo "$hex_value"
 }
 
+rm -rf $INDEX_PATH/Colors+*.swift
 echo "🎨 Generating semantic colors…"
 generateSemanticColors
 echo "🎉 Semantic colors successfully generated"

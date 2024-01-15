@@ -79,7 +79,6 @@ function generatePalette() {
     # Loop through each color
     for family in $color_families; do
         # Create a folder for the color
-        echo "    🏗️ Generating $(uppercase $family) colors…"
         value=$(jq -r ".$family" "$PALETTE_FILE")
 
         # Check if the value is an object or a string
@@ -95,7 +94,6 @@ function generatePalette() {
             # Handle string value
             createPaletteColor "$family" "$value"
         fi
-        echo "    ✅ $(uppercase $family) colors successfully generated"
     done
 }
 

@@ -1,86 +1,26 @@
 {
     "background": {
       "primary": {
-        "light": "white",
-        "dark": "gray.500"
+        "light": "gray.50",
+        "dark": "gray.950"
       },
       "secondary": {
-        "light": "white",
-        "dark": "gray.300"
-      },
-      "accent": {
-        "light": "yellow.500",
-        "dark": "purple.500"
-      },
-      "accentAlt": {
-        "light": "purple.100",
-        "dark": "purple.900"
-      },
-      "info": {
-        "light": "yellow.100",
-        "dark": "yellow.900"
-      },
-      "error": {
-        "light": "red.500",
-        "dark": "red.500"
-      },
-      "errorAlt": {
-        "light": "red.100",
-        "dark": "red.900"
-      },
-      "success": {
-        "light": "green.700",
-        "dark": "green.700"
-      },
-      "successAlt": {
-        "light": "green.100",
+        "light": "gray.100",
         "dark": "gray.900"
-      },
-      "connect": {
-        "light": "blue.500",
-        "dark": "blue.700"
-      },
-      "connectAlt": {
-        "light": "blue.100",
-        "dark": "blue.900"
-      },
-      "driver": {
-        "light": "yellow.500",
-        "dark": "yellow.500"
-      },
-      "owner": {
-        "light": "gray.700",
-        "dark": "gray.700"
-      },
-      "disabled": {
-        "light": "gray.100",
-        "dark": "gray.100"
-      },
-      "neutral": {
-        "light": "gray.100",
-        "dark": "gray.100"
-      },
-      "neutralAlt": {
-        "light": "gray.100",
-        "dark": "gray.100"
       }
     },
     "text": {
-      "base": {
-        "light": "gray.700",
-        "dark": "gray.100"
+      "primary": {
+        "light": "gray.800",
+        "dark": "gray.200"
       },
-      "subdued": {
-        "light": "gray.300",
-        "dark": "gray.300"
+      "secondary": {
+        "light": "gray.600",
+        "dark": "gray.400"
       },
       "accent": {
-        "light": "purple.500",
-        "dark": "purple.400"
-      },
-      "accentAlt": {
-        "light": "purple.500",
-        "dark": "gray.100"
+        "light": "lime.500",
+        "dark": "lime.400"
       },
       "info": {
         "light": "yellow.900",
@@ -90,371 +30,135 @@
         "light": "red.500",
         "dark": "red.400"
       },
-      "errorAlt": {
-        "light": "red.500",
-        "dark": "red.500"
-      },
       "success": {
         "light": "green.700",
         "dark": "green.700"
       },
-      "successAlt": {
-        "light": "gray.900",
-        "dark": "green.100"
-      },
-      "connect": {
-        "light": "blue.500",
-        "dark": "blue.700"
-      },
-      "connectAlt": {
-        "light": "blue.900",
-        "dark": "white"
-      },
-      "driver": {
-        "light": "gray.700",
-        "dark": "gray.700"
-      },
-      "owner": {
-        "light": "white",
-        "dark": "gray.100"
-      },
       "warning": {
         "light": "orange.500",
         "dark": "orange.300"
-      },
-      "infoAlt": {
-        "light": "yellow.700",
-        "dark": "yellow.700"
       },
       "disabled": {
         "light": "gray.200",
         "dark": "gray.100"
-      },
-      "onAccent": {
-        "light": "white",
-        "dark": "gray.100"
-      },
-      "onRideshare": {
-        "light": "white",
-        "dark": "white"
-      },
-      "onError": {
-        "light": "white",
-        "dark": "white"
-      },
-      "onSuccess": {
-        "light": "white",
-        "dark": "white"
       }
     },
     "icon": {
-      "base": {
+      "primary": {
         "light": "gray.500",
         "dark": "gray.100"
       },
-      "subdued": {
+      "secondary": {
         "light": "gray.300",
-        "dark": "gray.300"
+        "dark": "gray.400"
       },
       "accent": {
-        "light": "purple.500",
-        "dark": "purple.400"
-      },
-      "accentAlt": {
-        "light": "purple.500",
-        "dark": "gray.100"
+        "light": "lime.400",
+        "dark": "lime.400"
       },
       "info": {
-        "light": "yellow.900",
+        "light": "yellow.400",
         "dark": "yellow.300"
       },
       "error": {
-        "light": "red.500",
-        "dark": "red.400"
-      },
-      "errorAlt": {
-        "light": "red.500",
-        "dark": "red.200"
+        "light": "red.400",
+        "dark": "red.300"
       },
       "success": {
-        "light": "green.700",
-        "dark": "green.700"
-      },
-      "successAlt": {
-        "light": "gray.900",
-        "dark": "green.100"
-      },
-      "connect": {
-        "light": "blue.500",
-        "dark": "blue.700"
-      },
-      "connectAlt": {
-        "light": "blue.900",
-        "dark": "blue.100"
-      },
-      "driver": {
-        "light": "gray.700",
-        "dark": "gray.700"
-      },
-      "owner": {
-        "light": "white",
-        "dark": "white"
+        "light": "green.400",
+        "dark": "green.300"
       },
       "disabled": {
-        "light": "gray.100",
-        "dark": "gray.100"
-      },
-      "disabledAlt": {
         "light": "gray.300",
-        "dark": "gray.500"
+        "dark": "gray.700"
       },
       "warning": {
         "light": "orange.500",
         "dark": "orange.300"
-      },
-      "infoAlt": {
-        "light": "yellow.500",
-        "dark": "yellow.700"
-      },
-      "onAccent": {
-        "light": "white",
-        "dark": "white"
-      },
-      "rideshare": {
-        "light": "dark",
-        "dark": "white"
-      },
-      "onRideshare": {
-        "light": "white",
-        "dark": "white"
-      },
-      "onSuccess": {
-        "light": "white",
-        "dark": "white"
-      },
-      "onError": {
-        "light": "white",
-        "dark": "white"
       }
     },
     "stroke": {
-      "base": {
+      "primary": {
         "light": "gray.100",
         "dark": "gray.100"
       },
-      "subdued": {
+      "secondary": {
         "light": "gray.100",
         "dark": "gray.100"
       },
       "accent": {
-        "light": "purple.500",
-        "dark": "purple.500"
-      },
-      "accentAlt": {
-        "light": "purple.300",
-        "dark": "purple.400"
-      },
-      "success": {
-        "light": "green.500",
-        "dark": "green.700"
-      },
-      "successAlt": {
-        "light": "green.500",
-        "dark": "green.700"
+        "light": "lime.400",
+        "dark": "lime.300"
       },
       "error": {
-        "light": "red.500",
-        "dark": "red.200"
-      },
-      "errorAlt": {
-        "light": "red.500",
-        "dark": "red.200"
-      },
-      "strong": {
-        "light": "gray.300",
-        "dark": "gray.200"
-      },
-      "onAccent": {
-        "light": "white",
-        "dark": "gray.100"
-      },
-      "rentals": {
-        "light": "blue.500",
-        "dark": "blue.500"
-      },
-      "blokers": {
-        "light": "gray.300",
-        "dark": "gray.300"
-      },
-      "onError": {
-        "light": "white",
-        "dark": "white"
-      },
-      "onSuccess": {
-        "light": "white",
-        "dark": "white"
-      }
-    },
-    "buttonIcon": {
-      "primary": {
-        "light": "white",
-        "dark": "gray.100"
-      },
-      "secondary": {
-        "light": "purple.500",
-        "dark": "purple.400"
-      },
-      "tertiary": {
-        "light": "purple.500",
-        "dark": "white"
-      },
-      "destructive": {
-        "light": "red.500",
-        "dark": "red.200"
+        "light": "red.300",
+        "dark": "red.300"
       },
       "success": {
-        "light": "white",
-        "dark": "green.100"
-      },
-      "successAlt": {
-        "light": "green.900",
-        "dark": "green.100"
-      },
-      "disabled": {
-        "light": "gray.300",
-        "dark": "gray.300"
-      },
-      "accentAlt": {
-        "light": "purple.500",
-        "dark": "gray.100"
+        "light": "green.300",
+        "dark": "green.300"
       }
     },
     "buttonLabel": {
       "primary": {
-        "light": "white",
-        "dark": "gray.100"
+        "light": "gray.950",
+        "dark": "gray.950"
       },
       "secondary": {
-        "light": "purple.500",
-        "dark": "purple.400"
-      },
-      "tertiary": {
-        "light": "purple.500",
-        "dark": "white"
+        "light": "lime.500",
+        "dark": "lime.300"
       },
       "disabled": {
         "light": "gray.300",
-        "dark": "gray.300"
-      },
-      "accentAlt": {
-        "light": "purple.500",
-        "dark": "gray.100"
+        "dark": "gray.700"
       },
       "destructive": {
-        "light": "red.500",
-        "dark": "red.200"
+        "light": "red.600",
+        "dark": "red.600"
       },
       "success": {
-        "light": "white",
-        "dark": "green.100"
-      },
-      "successAlt": {
-        "light": "green.900",
-        "dark": "green.100"
+        "light": "green.700",
+        "dark": "green.700"
       }
     },
     "buttonBackground": {
       "primary": {
-        "light": "purple.500",
-        "dark": "purple.500"
+        "light": "lime.400",
+        "dark": "lime.300"
       },
       "secondary": {
-        "light": "white",
-        "dark": "gray.500"
-      },
-      "tertiary": {
-        "light": "white",
-        "dark": "white"
-      },
-      "accentAlt": {
-        "light": "purple.100",
-        "dark": "purple.900"
+        "light": "gray.50",
+        "dark": "gray.950"
       },
       "destructive": {
-        "light": "red.100",
-        "dark": "red.900"
+        "light": "red.300",
+        "dark": "red.300"
       },
       "success": {
-        "light": "green.700",
-        "dark": "green.900"
+        "light": "green.300",
+        "dark": "green.300"
       },
-      "successAlt": {
-        "light": "green.100",
+      "disabled": {
+        "light": "gray.100",
         "dark": "gray.900"
-      },
-      "disabled": {
-        "light": "gray.100",
-        "dark": "gray.100"
       }
     },
-    "fill": {
-      "base": {
-        "light": "gray.500",
-        "dark": "gray.300"
-      },
-      "accent": {
-        "light": "purple.500",
-        "dark": "purple.400"
+    "buttonBackgroundPressed": {
+      "primary": {
+        "light": "lime.300",
+        "dark": "lime.200"
       },
       "secondary": {
-        "light": "yellow.500",
-        "dark": "yellow.500"
+        "light": "lime.100",
+        "dark": "lime.950"
       },
-      "subdued": {
-        "light": "gray.100",
-        "dark": "gray.100"
-      },
-      "neutral": {
-        "light": "gray.100",
-        "dark": "gray.100"
-      },
-      "negative": {
-        "light": "red.100",
-        "dark": "red.800"
-      },
-      "accentAlt": {
-        "light": "purple.100",
-        "dark": "purple.900"
-      },
-      "disabled": {
-        "light": "gray.300",
-        "dark": "gray.300"
-      },
-      "error": {
-        "light": "red.500",
-        "dark": "red.500"
+      "destructive": {
+        "light": "red.200",
+        "dark": "red.200"
       },
       "success": {
-        "light": "green.500",
-        "dark": "green.700"
-      }
-    },
-    "illustrations": {
-      "primary": {
-        "light": "gray.500",
-        "dark": "white"
-      },
-      "secondary": {
-        "light": "white",
-        "dark": "white"
-      },
-      "acccent1": {
-        "light": "purple.500",
-        "dark": "white"
-      },
-      "accent2": {
-        "light": "blue.500",
-        "dark": "white"
+        "light": "green.200",
+        "dark": "green.200"
       }
     }
   }

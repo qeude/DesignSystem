@@ -6,7 +6,7 @@
         "components" : {
           "alpha" : "1.000",
           "blue" : "0x12",
-          "green" : "0x3F",
+          "green" : "0x3f",
           "red" : "0x71"
         }
       },

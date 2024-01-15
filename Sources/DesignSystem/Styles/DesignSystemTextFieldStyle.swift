@@ -6,13 +6,13 @@ public struct DesignSystemTextFieldStyle: TextFieldStyle {
   public func _body(configuration: TextField<Self._Label>) -> some View {
     configuration
       .textStyle(.designSystem(.body()))
-      .padding(Spacing.medium)
+      .padding(DesignSystem.Spacing.small)
       .frame(minHeight: Constants.minHeight)
-      .foregroundColor(Color(.Text.base))
+      .foregroundColor(DesignSystem.Color.Text.primary)
       .background(
-        RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous)
-          .stroke(Color(.Stroke.base), lineWidth: isFocused ? Constants.lineWidth : 0)
-          .fill(Color(.Background.secondary))
+        RoundedRectangle(cornerRadius: DesignSystem.CornerRadius.medium, style: .continuous)
+          .stroke(isFocused ? DesignSystem.Color.Stroke.accent : DesignSystem.Color.Stroke.primary, lineWidth: Constants.lineWidth)
+          .fill(DesignSystem.Color.Background.primary)
       )
       .focusable()
       .focused($isFocused)
@@ -22,8 +22,7 @@ public struct DesignSystemTextFieldStyle: TextFieldStyle {
 
 extension DesignSystemTextFieldStyle {
   enum Constants {
-    static let minHeight: CGFloat = 44
-    static let cornerRadius: CGFloat = 12
+    static let minHeight: CGFloat = 38
     static let lineWidth: CGFloat = 2
   }
 }
@@ -35,20 +34,10 @@ public extension TextFieldStyle where Self == DesignSystemTextFieldStyle {
   }
 }
 
-// MARK: Previews
-struct DesignSystemTextField_Previews: PreviewProvider {
-  struct PreviewsContainer: View {
-    @State private var text = ""
+#Preview {
+  @State var text = ""
 
-    var body: some View {
-      TextField("Add new player...", text: $text, prompt: nil)
-        .textFieldStyle(.designSystem)
-    }
-  }
-
-  static var previews: some View {
-    PreviewsContainer()
-      .frame(maxWidth: .infinity, maxHeight: .infinity)
+  return TextField("Add new player...", text: $text, prompt: nil)
+      .textFieldStyle(.designSystem)
       .padding()
-  }
 }

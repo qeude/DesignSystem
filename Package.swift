@@ -16,11 +16,13 @@ let package = Package(
       targets: ["DesignSystem"]),
   ],
   dependencies: [
+    .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "4.1.1"))
   ],
   targets: [
     .target(
       name: "DesignSystem",
       dependencies: [
+        "SFSafeSymbols"
       ],
       resources: [
           .process("Resources"),

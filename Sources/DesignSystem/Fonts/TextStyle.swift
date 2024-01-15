@@ -25,12 +25,12 @@ public struct DesignSystemTextStyle: TextStyle {
     var name: String {
       switch self {
       case .title1, .title2, .title3:
-        return ClashDisplayFont.bold.name
+        return DesignSystem.ClashDisplayFont.bold.name
       case .body(let variant), .small(let variant):
         switch variant {
-        case .regular: return SatoshiFont.regular.name
-        case .italic: return SatoshiFont.italic.name
-        case .bold: return SatoshiFont.bold.name
+        case .regular: return DesignSystem.SatoshiFont.regular.name
+        case .italic: return DesignSystem.SatoshiFont.italic.name
+        case .bold: return DesignSystem.SatoshiFont.bold.name
         }
       }
     }

@@ -1,75 +1,30 @@
 import SwiftUI
 
-public struct DesignSystemButtonStyle: ButtonStyle {
+struct DesignSystemButtonStyle: ButtonStyle {
   @Environment(\.isEnabled) private var isEnabled
-  var style: DesignSystemButtonStyle.Style
+  var style: DesignSystem.Button.Style
 
   public func makeBody(configuration: Self.Configuration) -> some View {
     return configuration.label
       .textStyle(.designSystem(.body(.bold)))
       .foregroundColor(configuration.isPressed ? style.pressedTextColor(isEnabled: isEnabled) : style.textColor(isEnabled: isEnabled))
-      .padding(Spacing.medium)
-      .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(configuration.isPressed ? style.pressedBackgroundColor(isEnabled: isEnabled) : style.backgroundColor(isEnabled: isEnabled)).frame(minHeight: Constants.minHeight))
+      .padding(DesignSystem.Spacing.medium)
+      .background(RoundedRectangle(cornerRadius: DesignSystem.CornerRadius.medium).fill(configuration.isPressed ? style.pressedBackgroundColor(isEnabled: isEnabled) : style.backgroundColor(isEnabled: isEnabled)).frame(minHeight: Constants.minHeight))
       .frame(minHeight: Constants.minHeight)
   }
 }
 
-extension DesignSystemButtonStyle {
-  public enum Style {
-    case primary
-    case secondary
-
-    func backgroundColor(isEnabled: Bool) -> Color {
-      switch self {
-      case .primary:
-        return isEnabled ?
-        Color(.ButtonBackground.primary) : Color(.ButtonBackground.disabled)
-      case .secondary:
-        return isEnabled ? Color(.ButtonBackground.primary) : Color(.ButtonBackground.disabled)
-      }
-    }
-
-    func pressedBackgroundColor(isEnabled: Bool) -> Color {
-      switch self {
-      case .primary:
-        return isEnabled ? Color(.ButtonBackground.primary) : Color(.ButtonBackground.disabled)
-      case .secondary:
-        return isEnabled ? Color(.ButtonBackground.primary) : Color(.ButtonBackground.disabled)
-      }
-    }
-
-    func textColor(isEnabled: Bool) -> Color {
-      switch self {
-      case .primary:
-        return isEnabled ? Color(.ButtonLabel.primary) : Color(.ButtonLabel.disabled)
-      case .secondary:
-        return isEnabled ? Color(.ButtonLabel.primary) : Color(.ButtonLabel.disabled)
-      }
-    }
-
-    func pressedTextColor(isEnabled: Bool) -> Color {
-      switch self {
-      case .primary:
-        return isEnabled ? Color(.ButtonLabel.primary) : Color(.ButtonLabel.disabled)
-      case .secondary:
-        return isEnabled ? Color(.ButtonLabel.primary) : Color(.ButtonLabel.disabled)
-      }
-    }
-  }
-}
 
 // MARK: Constants
 extension DesignSystemButtonStyle {
   private enum Constants {
-    static let padding: CGFloat = 12
-    static let cornerRadius: CGFloat = 12
-    static let minHeight: CGFloat = 50
+    static let minHeight: CGFloat = 44
   }
 }
 
 // MARK: Convenient usage
 extension ButtonStyle where Self == DesignSystemButtonStyle {
-  public static func designSystem(_ style: DesignSystemButtonStyle.Style) -> Self {
+  static func designSystem(_ style: DesignSystem.Button.Style) -> Self {
     return .init(style: style)
   }
 }
@@ -77,30 +32,31 @@ extension ButtonStyle where Self == DesignSystemButtonStyle {
 // MARK: Previews
 #Preview("Primary") {
   VStack {
-    Button {
-    } label: {
-      Text("Button")
+    VStack {
+      Button {
+      } label: {
+        Text("Primary")
+      }
+      Button {
+      } label: {
+        Text("Primary disabled")
+      }
+      .disabled(true)
     }
-    Button {
-    } label: {
-      Text("Disabled")
+    .buttonStyle(.designSystem(.primary))
+    VStack {
+      Button {
+      } label: {
+        Text("Secondary")
+      }
+      Button {
+      } label: {
+        Text("Secondary disabled")
+      }
+      .disabled(true)
     }
-    .disabled(true)
+    .buttonStyle(.designSystem(.secondary))
   }
-  .buttonStyle(.designSystem(.primary))
-}
-
-#Preview("Secondary") {
-  VStack {
-    Button {
-    } label: {
-      Text("Button")
-    }
-    Button {
-    } label: {
-      Text("Button")
-    }
-    .disabled(true)
-  }
-  .buttonStyle(.designSystem(.secondary))
+  .frame(maxWidth: .infinity, maxHeight: .infinity)
+  .background(DesignSystem.Color.Background.primary)
 }
